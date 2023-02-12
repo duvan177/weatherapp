@@ -4,7 +4,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import RestoreIcon from "@mui/icons-material/Restore";
-import { Cloud } from "@mui/icons-material";
+import { Cloud , AirOutlined, CalendarMonth } from "@mui/icons-material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
@@ -33,7 +33,7 @@ export default function BottomNavigation() {
       <BottomNavigationAction
         LinkComponent={Link}
         href="quality_air"
-        icon={<RestoreIcon fontSize="large" />}
+        icon={<AirOutlined fontSize="large" />}
       />
       <BottomNavigationAction
         LinkComponent={Link}
@@ -43,7 +43,7 @@ export default function BottomNavigation() {
       <BottomNavigationAction
         LinkComponent={Link}
         href="/"
-        icon={<LocationOnIcon fontSize="large" />}
+        icon={<CalendarMonth fontSize="large" />}
       />
     </BottomNavigationApp>
   );
