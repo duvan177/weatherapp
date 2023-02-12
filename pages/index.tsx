@@ -8,25 +8,30 @@ import {
   Card,
   CardActions,
   CardContent,
+  Paper,
   Skeleton,
+  styled,
   Typography,
+  Container,
+  Divider,
 } from "@mui/material";
-import { Container } from "@mui/system";
 import { useGetDataWeatherService } from "@/hooks/useWeather";
-
-const inter = Inter({ subsets: ["latin"] });
+import Grid from "@mui/material/Unstable_Grid2";
 
 function Home(): JSX.Element {
   const { data, isLoading } = useGetDataWeatherService();
   console.log(data);
+  const myLoader=({src}:any)=>{
+    return `${data?.current.condition.icon}`;
+  }
   return (
     <>
       <main>
         <Container
           style={{
-            justifyContent: "center",
+            justifyContent: "space-around",
             alignItems: "center",
-            display: "flex",
+            display: "grid",
             alignContent: "center",
             height: "85vh",
           }}
@@ -36,6 +41,7 @@ function Home(): JSX.Element {
             sx={{
               minWidth: 375,
               bgcolor: "black",
+              marginBottom: 10,
               justifyContent: "center",
               alignItems: "center",
               display: "grid",
@@ -50,67 +56,146 @@ function Home(): JSX.Element {
                 justifyItems: "center",
               }}
             >
-              {isLoading ? (
-                <Skeleton
-                  style={{ background: "gray", marginBottom: "10px" }}
-                  variant="circular"
-                  width={150}
-                  height={150}
-                />
-              ) : (
-                <Image
-                  src={ `http:${data?.current.condition.icon}`}
-                  alt="Picture of the author"
-                  
-                  width={150}
-                  height={150}
-                />
-              )}
-
-              {isLoading ? (
-                <Skeleton
-                  style={{ background: "gray" }}
-                  variant="text"
-                  sx={{ fontSize: "1rem", width: 200 }}
-                />
-              ) : (
-                <Typography
-                  fontFamily={"monospace"}
-                  color={"white"}
-                  variant={"body1"}
-                >
-                  {data?.current.condition.text}
-                </Typography>
-              )}
-
-              {isLoading ? (
-                <Skeleton
-                  style={{ background: "gray", marginTop: "10px" }}
-                  variant="rectangular"
-                  sx={{ width: 200, height: 200 }}
-                />
-              ) : (
-                <Typography
-                  fontFamily={"monospace"}
-                  color={"white"}
-                  fontSize={"15vh"}
-                >
-                  {`${data?.current.temp_c}°C`}
-                </Typography>
-              )}
+              <Image
+              loading="lazy"
+                loader={myLoader}
+                src={`${data?.current.condition.icon}`}
+                alt="Picture of the author"
+                width={150}
+                height={150}
+                unoptimized 
+              />
+              <Typography
+                fontFamily={"Montserrat Alternates"}
+                color={"white"}
+                variant={"body2"}
+              >
+                {data?.current.condition.text}
+              </Typography>
+              <Typography
+                fontFamily={"Montserrat Alternates"}
+                color={"white"}
+                variant={"h3"}
+              >
+                {`${data?.current.temp_c}°C`}
+              </Typography>
             </CardContent>
-            <CardActions>
-              {isLoading ? (
-                <Skeleton
-                  style={{ background: "gray" }}
-                  variant="rectangular"
-                  sx={{ width: 100, height: 30 }}
-                />
-              ) : (
-                <Button size="small">Learn More</Button>
-              )}
-            </CardActions>
           </Card>
+          <Container maxWidth="sm">
+            <Grid container spacing={4}>
+              <Grid xs={4}>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"gray"}
+                  variant={"body2"}
+                >
+                  Humidity
+                </Typography>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"white"}
+                  variant={"h5"}
+                >
+                  {`${data?.current.humidity} %`}
+                </Typography>
+              </Grid>
+              <Grid xs={4}>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"gray"}
+                  variant={"body2"}
+                >
+                  Wind now
+                </Typography>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"white"}
+                  variant={"h5"}
+                >
+                  {`${data?.current.wind_kph} Km`}
+                </Typography>
+              </Grid>
+              <Grid xs={4}>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"gray"}
+                  variant={"body2"}
+                >
+                  Preciptation
+                </Typography>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"white"}
+                  variant={"h5"}
+                >
+                  {`${data?.current.precip_mm} mm`}
+                </Typography>
+              </Grid>
+              <Grid  xs={12} height={2}>
+              <div  style={{background:'linear-gradient(90deg, rgba(153,153,153,100) 0%, rgba(106,106,106,1) 36%, rgba(0,0,0,100) 100%)' , height:1}}></div>
+              </Grid>
+              <Grid xs={4}>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"gray"}
+                  variant={"body2"}
+                >
+                  Pressure
+                </Typography>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"white"}
+                  variant={"h5"}
+                >
+                  {`${data?.current.pressure_mb}`}
+                </Typography>
+              </Grid>
+              <Grid xs={4}>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"gray"}
+                  variant={"body2"}
+                >
+                  Visibility
+                </Typography>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"white"}
+                  variant={"h5"}
+                >
+                  {`${data?.current.vis_km} km`}
+                </Typography>
+              </Grid>
+              <Grid xs={4}>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"gray"}
+                  variant={"body2"}
+                >
+                  UV
+                </Typography>
+                <Typography
+                  textAlign={"center"}
+                  fontFamily={"Montserrat Alternates"}
+                  color={"white"}
+                  variant={"h5"}
+                >
+                  {`${data?.current.uv}`}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Container>
         </Container>
       </main>
     </>

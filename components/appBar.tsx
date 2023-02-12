@@ -15,7 +15,7 @@ export default function AppBar() {
           >
            
           </IconButton>
-          <Typography variant="h6" component="div" fontFamily={'monospace'} sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" fontFamily={'Montserrat Alternates'} sx={{ flexGrow: 1 }}>
             Cali - Colombia
           </Typography>
         
