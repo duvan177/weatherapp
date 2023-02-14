@@ -3,11 +3,8 @@ import {
   BottomNavigation as BottomNavigationApp,
 } from "@mui/material";
 import React from "react";
-import RestoreIcon from "@mui/icons-material/Restore";
 import { Cloud , AirOutlined, CalendarMonth } from "@mui/icons-material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Link from "next/link";
-import styles from "@/styles/Home.module.css";
 export default function BottomNavigation() {
   const [value, setValue] = React.useState(1);
   return (

@@ -14,7 +14,7 @@ export default function QualityAir() {
       maxWidth={"lg"}
     >
       <Box sx={{ flexGrow: 1 }}>
-        <span style={{color:'black'}}>calidad del aire ya es fast</span>
+        <span style={{color:'white'}}>calidad del aire ya es fast</span>
       </Box>
     </Container>
   );

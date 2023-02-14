@@ -1,0 +1,81 @@
+[
+    [
+        {
+            "name": "Humidity",
+            "variant": "body2",
+            "color": "gray"
+        },
+        {
+            "variable": "humidity",
+            "variant": "h5",
+            "symbol": "%",
+            "color": "white"
+        }
+     
+    ],
+    [
+        {
+            "name": "Wind now",
+            "variant": "body2",
+            "color": "gray"
+        },
+        {
+            "variable": "wind_kph",
+            "variant": "h5",
+            "symbol": "Km",
+            "color": "white"
+        }
+    ],
+    [
+        {
+            "name": "Preciptation",
+            "variant": "body2",
+            "color": "gray"
+        },
+        {
+            "variable": "precip_mm",
+            "variant": "h5",
+            "symbol": "mm",
+            "color": "white"
+        }
+],
+    [
+        {
+            "name": "Pressure",
+            "variant": "body2",
+            "color": "gray"
+        },
+        {
+            "variable": "pressure_mb",
+            "variant": "h5",
+            "symbol": "mb",
+            "color": "white"
+        }   
+    ],
+    [
+        {
+            "name": "Visibility",
+            "variant": "body2",
+            "color": "gray"
+        },
+        {
+            "variable": "vis_km",
+            "variant": "h5",
+            "symbol": "Km",
+            "color": "white"
+        }
+    ],
+    [
+        {
+            "name": " UV",
+            "variant": "body2",
+            "color": "gray"
+        },
+        {
+            "variable": "uv",
+            "variant": "h5",
+            "symbol": "",
+            "color": "white"
+        }
+    ]
+]
