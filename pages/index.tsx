@@ -69,8 +69,19 @@ function Home(): JSX.Element {
           </Card>
           <Container maxWidth="sm">
             <Grid container spacing={4}>
-              {jsonDataContentCard.map((item: any) => (
+              {jsonDataContentCard.map((item: any, idx: number) => (
                 <>
+                  {idx === 3 && (
+                    <Grid height={2} xs={12}>
+                      <div
+                        style={{
+                          background:
+                            "linear-gradient(90deg, rgba(153,153,153,100) 0%, rgba(106,106,106,1) 36%, rgba(0,0,0,100) 100%)",
+                          height: 1,
+                        }}
+                      ></div>
+                    </Grid>
+                  )}
                   <Grid xs={4}>
                     {item.map((varItem: any) => (
                       <Typography
