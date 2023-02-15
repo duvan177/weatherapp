@@ -3,13 +3,16 @@ import { Card, CardContent, Typography, Container } from "@mui/material";
 import { useGetDataWeatherService } from "@/hooks/useWeather";
 import Grid from "@mui/material/Unstable_Grid2";
 import jsonDataContentCard from "@/json/contentWeather.json";
-
+import { useWeatherStore } from "@/store/weatherStore";
+import shortid from "shortid";
 function Home(): JSX.Element {
+  const setWeatherStore = useWeatherStore((state:any) => state.setWeather);
   const { data, isLoading } = useGetDataWeatherService();
   console.log(data);
+  setWeatherStore(data)
   const myLoader = ({ src }: any) => {
     return `${data?.current.condition.icon}`;
-  };
+  }; 
   return (
     <>
       <main>
@@ -70,34 +73,24 @@ function Home(): JSX.Element {
           <Container maxWidth="sm">
             <Grid container spacing={4}>
               {jsonDataContentCard.map((item: any, idx: number) => (
-                <>
-                  {idx === 3 && (
-                    <Grid height={2} xs={12}>
-                      <div
-                        style={{
-                          background:
-                            "linear-gradient(90deg, rgba(153,153,153,100) 0%, rgba(106,106,106,1) 36%, rgba(0,0,0,100) 100%)",
-                          height: 1,
-                        }}
-                      ></div>
-                    </Grid>
-                  )}
-                  <Grid xs={4}>
-                    {item.map((varItem: any) => (
-                      <Typography
-                        textAlign={"center"}
-                        fontFamily={"Montserrat Alternates"}
-                        color={varItem.color}
-                        variant={varItem.variant}
-                      >
-                        {varItem.name ||
-                          `${data?.current[varItem.variable]} ${
-                            varItem.symbol
-                          }`}
-                      </Typography>
-                    ))}
+
+                  <Grid key={shortid.generate()} xs={4}>
+                      {item.map((varItem: any) => (
+                        <Typography
+                        key={shortid.generate()}
+                          textAlign={"center"}
+                          fontFamily={"Montserrat Alternates"}
+                          color={varItem.color}
+                          variant={varItem.variant}
+                        >
+                          {varItem.name ||
+                            `${data?.current[varItem.variable]} ${
+                              varItem.symbol
+                            } ${idx}`}
+                        </Typography>
+                      ))}
                   </Grid>
-                </>
+
               ))}
             </Grid>
           </Container>

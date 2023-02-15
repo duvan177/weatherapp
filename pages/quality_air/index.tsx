@@ -1,7 +1,10 @@
+import { useWeatherStore } from "@/store/weatherStore";
 import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 
 export default function QualityAir() {
+ const weather = useWeatherStore((state:any) => state.weather);
+ console.log('qa' ,weather)
   return (
     <Container
       style={{
